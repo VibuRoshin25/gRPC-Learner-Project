@@ -23,5 +23,8 @@ COPY --from=builder /app/main .
 # Expose port  
 EXPOSE 9000
 
+# Set the entrypoint to the binaryEnsure executable permission
+RUN chmod +x /app/main
+
 # Run the binary
 CMD ["./main"]
