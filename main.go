@@ -21,11 +21,11 @@ func main() {
 
 	grpcServer := grpc.NewServer()
 
+	logger.RegisterLoggerServer(grpcServer, &Server{})
+
+	log.Println("Logger Service is starting on port 9000...")
+
 	if err := grpcServer.Serve(listen); err != nil {
 		log.Fatal("Failed to start logger service on port 9000: ", err)
 	}
-
-	logger.RegisterLoggerServer(grpcServer, &Server{})
-
-	log.Println("Logger Service is running on port 9000")
 }
