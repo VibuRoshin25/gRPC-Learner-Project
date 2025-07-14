@@ -12,8 +12,6 @@ message LogRequest {
   string service = 1;
   string level = 2;
   string message = 3;
-  string file = 4;
-  int64 line = 5;
 }
 
 message LogResponse {

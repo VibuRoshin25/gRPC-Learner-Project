@@ -26,8 +26,6 @@ type LogRequest struct {
 	Service       string                 `protobuf:"bytes,1,opt,name=service,proto3" json:"service,omitempty"`
 	Level         string                 `protobuf:"bytes,2,opt,name=level,proto3" json:"level,omitempty"`
 	Message       string                 `protobuf:"bytes,3,opt,name=message,proto3" json:"message,omitempty"`
-	File          string                 `protobuf:"bytes,4,opt,name=file,proto3" json:"file,omitempty"`
-	Line          int64                  `protobuf:"varint,5,opt,name=line,proto3" json:"line,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -81,20 +79,6 @@ func (x *LogRequest) GetMessage() string {
 		return x.Message
 	}
 	return ""
-}
-
-func (x *LogRequest) GetFile() string {
-	if x != nil {
-		return x.File
-	}
-	return ""
-}
-
-func (x *LogRequest) GetLine() int64 {
-	if x != nil {
-		return x.Line
-	}
-	return 0
 }
 
 type LogResponse struct {
@@ -153,14 +137,12 @@ var File_logger_proto protoreflect.FileDescriptor
 
 const file_logger_proto_rawDesc = "" +
 	"\n" +
-	"\flogger.proto\x12\x06logger\"~\n" +
+	"\flogger.proto\x12\x06logger\"V\n" +
 	"\n" +
 	"LogRequest\x12\x18\n" +
 	"\aservice\x18\x01 \x01(\tR\aservice\x12\x14\n" +
 	"\x05level\x18\x02 \x01(\tR\x05level\x12\x18\n" +
-	"\amessage\x18\x03 \x01(\tR\amessage\x12\x12\n" +
-	"\x04file\x18\x04 \x01(\tR\x04file\x12\x12\n" +
-	"\x04line\x18\x05 \x01(\x03R\x04line\"9\n" +
+	"\amessage\x18\x03 \x01(\tR\amessage\"9\n" +
 	"\vLogResponse\x12\x18\n" +
 	"\asuccess\x18\x01 \x01(\bR\asuccess\x12\x10\n" +
 	"\x03err\x18\x02 \x01(\tR\x03err28\n" +
