@@ -10,7 +10,7 @@ RUN go mod download
 COPY . .
 
 # Build the Go app
-RUN go build -o /server/ .
+RUN go build -o main ./server/main.go
 
 # Use a minimal image for running
 FROM alpine:latest
