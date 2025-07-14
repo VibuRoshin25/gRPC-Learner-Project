@@ -81,6 +81,8 @@ func (s *Server) Log(_ context.Context, req *logger.LogRequest) (*logger.LogResp
 
 	Logger.WithOptions(zap.AddCallerSkip(1)).Info(req.Message)
 
+	Logger.Sync()
+
 	return &logger.LogResponse{
 		Success: true,
 	}, nil
