@@ -14,6 +14,12 @@ type Server struct {
 }
 
 func main() {
+
+	if err := InitLogger(); err != nil {
+		log.Fatalf("Failed to initialize logger: %v", err)
+	}
+	defer Logger.Sync()
+
 	listen, err := net.Listen("tcp", ":9000")
 	if err != nil {
 		log.Fatal("Failed to listen on Port 9000: ", err)
