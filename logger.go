@@ -44,11 +44,6 @@ func InitLogger() error {
 		logPath,  // Logs to file
 	}
 
-	// Set service name field
-	cfg.InitialFields = map[string]interface{}{
-		"service": "UBS",
-	}
-
 	// Customize encoder to include caller information
 	cfg.EncoderConfig.TimeKey = "timestamp"
 	cfg.EncoderConfig.EncodeTime = zapcore.ISO8601TimeEncoder
@@ -79,7 +74,14 @@ func (s *Server) Log(_ context.Context, req *logger.LogRequest) (*logger.LogResp
 		}, nil
 	}
 
-	Logger.WithOptions(zap.AddCallerSkip(1)).Info(req.Message)
+	switch req.Level {
+	case "INFO":
+		Logger.WithOptions(zap.AddCallerSkip(1)).Info(req.Message, zap.String("service", req.Service))
+	case "DEBUG":
+		Logger.WithOptions(zap.AddCallerSkip(1)).Debug(req.Message, zap.String("service", req.Service))
+	case "ERROR":
+		Logger.WithOptions(zap.AddCallerSkip(1)).Error(req.Message, zap.String("service", req.Service))
+	}
 
 	Logger.Sync()
 
