@@ -1,4 +1,4 @@
-module gRPC-Learner-Project
+module vibrox-echo
 
 go 1.24.4
 

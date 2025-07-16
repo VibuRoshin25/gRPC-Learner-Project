@@ -2,9 +2,9 @@ package main
 
 import (
 	"context"
-	"gRPC-Learner-Project/proto/logger"
 	"os"
 	"path/filepath"
+	"vibrox-echo/proto/logger"
 
 	"go.uber.org/zap"
 	"go.uber.org/zap/zapcore"
