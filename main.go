@@ -4,7 +4,7 @@ import (
 	"log"
 	"net"
 
-	"gRPC-Learner-Project/proto/logger"
+	"vibrox-echo/proto/logger"
 
 	"google.golang.org/grpc"
 )
